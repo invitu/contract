@@ -325,11 +325,11 @@ class TestSubscriptionOCA(BaseCommon):
                 ],
             }
         )
+        so.with_context(uid=1).action_confirm()  # without subs.
         so._compute_subscriptions_count()
         self.assertEqual(so.subscriptions_count, 0)
         action = so.action_view_subscriptions()
         self.assertIsInstance(action, dict)
-        so.with_context(uid=1).action_confirm()  # without subs.
 
     def test_subscription_oca_sub_lines(self):
         # sale.subscription.line
